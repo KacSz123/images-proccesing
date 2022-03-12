@@ -244,9 +244,9 @@ void Rozmycie_poz(int (*o_pgm)[MAX][MAX], int wymx, int wymy, int promien)
     }
   }
 
-  for (i = 0; i < wymy; ++i)
+    for (i =0; i < wymy; ++i)
   {
-    for (j = wymx - promien - 1; j < wymx; ++j)
+    for (j =  wymx - promien - 1; j < wymx; ++j)
     {
       for (k = 1; k <= promien; ++k)
       {
