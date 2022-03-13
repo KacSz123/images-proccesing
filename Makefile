@@ -1,4 +1,4 @@
-__start__: clean_screen clean _free_lines_ obj all __end__
+__start__: clean_screen clean _free_lines_ obj all __end__ run
 	
 CFLAGS = -Wall -pedantic # tutaj można dodawać inne flagi kompilatora
 LIBS =  # tutaj można dodawać biblioteki

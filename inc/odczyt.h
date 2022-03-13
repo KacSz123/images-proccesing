@@ -19,7 +19,7 @@
  * \return liczba wczytanych pikseli						                        *
  ************************************************************************************/
 
-int czytaj(FILE *plik_we,int obraz_pgm[][MAX],int *wymx,int *wymy, int *szarosci); 
+int czytaj(FILE *plik_we, int obraz_pgm[MAX][MAX], int *wymx,int *wymy, int *szarosci); 
 
 
 

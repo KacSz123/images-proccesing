@@ -5,16 +5,16 @@
 
 /************************************************************************************
  * Funkcja wczytuje obraz PGM z pliku do tablicy       	       	       	       	    *
- *										    *
- * \param[in] plik_we uchwyt do pliku z obrazem w formacie PGM			    *
- * \param[out] obraz_pgm tablica, do ktorej zostanie zapisany obraz		    *
- * \param[out] wymx szerokosc obrazka						    *
- * \param[out] wymy wysokosc obrazka						    *
- * \param[out] szarosci liczba odcieni szarosci					    *
- * \return liczba wczytanych pikseli						    *
+ *										                                                              *
+ * \param[in] plik_we uchwyt do pliku z obrazem w formacie PGM		            	    *
+ * \param[out] obraz_pgm tablica, do ktorej zostanie zapisany obraz		              *
+ * \param[out] wymx szerokosc obrazka						                                    *
+ * \param[out] wymy wysokosc obrazka						                                    *
+ * \param[out] szarosci liczba odcieni szarosci					                            *
+ * \return liczba wczytanych pikseli						                                    *
  ************************************************************************************/
 
-int czytaj(FILE *plik_we, int obraz_pgm[][MAX], int *wymx, int *wymy, int *szarosci)
+int czytaj(FILE *plik_we, int obraz_pgm[MAX][MAX],  int *wymx, int *wymy, int *szarosci)
 {
   char buf[DL_LINII]; /* bufor pomocniczy do czytania naglowka i komentarzy */
   int znak;           /* zmienna pomocnicza do czytania komentarzy */
@@ -234,7 +234,7 @@ void Rozmycie_poz(int (*o_pgm)[MAX][MAX], const int wymx, const int wymy, const 
 
   for (i = 0; i < wymy; ++i)
   {
-    for (j = promien + 1; j <= wymx - promien - 2; ++j)
+    for (j = promien + 1; j <= wymx - promien - 1; ++j)
     {
       for (k = 0; k < promien; ++k)
       {
