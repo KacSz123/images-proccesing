@@ -88,11 +88,11 @@ void wyswietl(char *n_pliku)
   // printf("asfasfag\n");
 }
 
-int zapisz(FILE *fp, const int obraz_pgm[MAX][MAX], const int wymx, const int wymy, const int szarosci)
+int zapisz(FILE *fp,  int obraz_pgm[MAX][MAX], const int wymx, const int wymy, const int szarosci, char* nazwa)
 {
   // FILE *fp; /* używamy metody wysokopoziomowej - musimy mieć zatem identyfikator pliku, uwaga na gwiazdkę! */
   // char *tekst = "Hello world123123";
-  char *nazwa = "test.pgm";
+  //char *nazwa = "test.pgm";
   if ((fp = fopen(nazwa, "w")) == NULL)
   {
     printf("Nie mogę otworzyć pliku %s do zapisu!\n", nazwa);

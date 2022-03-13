@@ -26,7 +26,7 @@ int czytaj(FILE *plik_we, int obraz_pgm[MAX][MAX], int *wymx,int *wymy, int *sza
 /* Wyswietlenie obrazu o zadanej nazwie za pomoca programu "display"   */
 void wyswietl(char *n_pliku); 
 
-int zapisz(FILE *fp, const int obraz_pgm[MAX][MAX],const int wymx,const int wymy, const int szarosci);
+int zapisz(FILE *fp,  int obraz_pgm[MAX][MAX],const int wymx,const int wymy, const int szarosci, char* nazwa);
 void Negatyw(int (*obraz_pgm)[MAX][MAX],const int wymx, const int wymy,  int szarosci);
 void Konturowanie(int (*o_pgm)[MAX][MAX], const int wymx, const int wymy); 
 void Progowanie(int (*o_pgm)[MAX][MAX], const int wymx, const int wymy, const int szarosci, const int prog);
