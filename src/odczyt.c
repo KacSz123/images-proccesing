@@ -88,7 +88,7 @@ void wyswietl(char *n_pliku)
   // printf("asfasfag\n");
 }
 
-int zapisz(FILE *fp, int obraz_pgm[MAX][MAX], int wymx, int wymy, int szarosci)
+int zapisz(FILE *fp, const int obraz_pgm[MAX][MAX], const int wymx, const int wymy, const int szarosci)
 {
   // FILE *fp; /* używamy metody wysokopoziomowej - musimy mieć zatem identyfikator pliku, uwaga na gwiazdkę! */
   // char *tekst = "Hello world123123";
@@ -116,7 +116,7 @@ int zapisz(FILE *fp, int obraz_pgm[MAX][MAX], int wymx, int wymy, int szarosci)
   return 0;
 }
 
-void Negatyw(int (*obraz_pgm)[MAX][MAX], int wymx, int wymy, int szarosci)
+void Negatyw(int (*obraz_pgm)[MAX][MAX],const int wymx, const int wymy, const int szarosci)
 {
   int i, j;
   for (i = 0; i < wymy; ++i)
@@ -127,7 +127,7 @@ void Negatyw(int (*obraz_pgm)[MAX][MAX], int wymx, int wymy, int szarosci)
     }
   }
 }
-void Konturowanie(int (*o_pgm)[MAX][MAX], int wymx, int wymy)
+void Konturowanie(int (*o_pgm)[MAX][MAX], const int wymx, const int wymy)
 {
   int i, j;
   for (i = 0; i < wymy; ++i)
@@ -147,7 +147,7 @@ void Konturowanie(int (*o_pgm)[MAX][MAX], int wymx, int wymy)
     }
   }
 }
-void Progowanie(int (*o_pgm)[MAX][MAX], int wymx, int wymy, int szarosci, int prog)
+void Progowanie(int (*o_pgm)[MAX][MAX], const int wymx, const int wymy, const int szarosci, const int prog)
 {
   int i, j;
   for (i = 0; i < wymy; ++i)
@@ -161,7 +161,7 @@ void Progowanie(int (*o_pgm)[MAX][MAX], int wymx, int wymy, int szarosci, int pr
     }
   }
 }
-void Rozmycie_pion(int (*o_pgm)[MAX][MAX], int wymx, int wymy, int promien)
+void Rozmycie_pion(int (*o_pgm)[MAX][MAX], const int wymx, const int wymy, const int promien)
 {
   int i, j, k, p;
 
@@ -194,7 +194,7 @@ void Rozmycie_pion(int (*o_pgm)[MAX][MAX], int wymx, int wymy, int promien)
     }
   }
 
-  for (i = wymy - promien - 1; i < wymy; ++i)
+  for (i =wymy-1; i >=  wymy - promien - 1; --i)
   {
     for (j = 0; j < wymx; ++j)
     {
@@ -211,7 +211,7 @@ void Rozmycie_pion(int (*o_pgm)[MAX][MAX], int wymx, int wymy, int promien)
     }
   }
 }
-void Rozmycie_poz(int (*o_pgm)[MAX][MAX], int wymx, int wymy, int promien)
+void Rozmycie_poz(int (*o_pgm)[MAX][MAX], const int wymx, const int wymy, const int promien)
 {
   int i, j, k, p;
 
@@ -246,7 +246,7 @@ void Rozmycie_poz(int (*o_pgm)[MAX][MAX], int wymx, int wymy, int promien)
 
     for (i =0; i < wymy; ++i)
   {
-    for (j =  wymx - promien - 1; j < wymx; ++j)
+    for (j =  wymx- 1; j >= wymx - promien -1; --j)
     {
       for (k = 1; k <= promien; ++k)
       {

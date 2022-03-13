@@ -1,6 +1,6 @@
-#include<stdio.h>
-#include<string.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 #include "../inc/odczyt.h"
 
 void Show_menu()
@@ -14,85 +14,81 @@ void Show_menu()
     printf("****  3 - Wyswietl obraz     **** \n");
     printf("****  4 - Op. konturowania   **** \n");
     printf("****  5 - Op. rozmycia pion. **** \n");
-    printf("****  5 - Op. rozmycia poz.  **** \n");
-    printf("****  K - Zakoncz program    **** \n ");
+    printf("****  6 - Op. rozmycia poz.  **** \n");
+    printf("****  7 - Op. progowania     **** \n");
+    printf("****  m - Wyswietl menu      **** \n");
+    printf("****  k - Zakoncz program    **** \n");
     printf("********************************* \n");
     printf("********************************* \n\n\n");
-
 }
+
 int Menu_function()
 {
     int a;
 
     scanf("%d", &a);
 
-    switch(a)
+    switch (a)
     {
-        case 1:
+    case 1:
         printf("Wybrano opcje nr 1\n");
         break;
-        case 2:
+    case 2:
         printf("Wybrano opcje nr 2\n");
         break;
-        case 3:
+    case 3:
         printf("Wybrano opcje nr 3\n");
         break;
-        case 4:
+    case 4:
         printf("Wybrano opcje nr 4\n");
         break;
-        case 0:
+    case 0:
         break;
-        default:
+    default:
         printf("zly wybor\n\n");
         break;
     }
     return a;
-    
 }
 
-
-int main() 
+int main()
 {
-  int obraz[MAX][MAX] ;
-  int wymx,wymy,odcieni;
+    int obraz[MAX][MAX];
+    int wymx, wymy, odcieni;
 
-  int odczytano = 0;
-  int wybor;
-  FILE *plik;
-  FILE *plik_wy;
+    int odczytano = 0;
+    int wybor;
+    FILE *plik;
+    FILE *plik_wy;
 
-  char nazwa[50];
-  char nazwe_wy[50];
-  Show_menu();
-  printf("Podaj funkcję z zakresu 1-4:\n");
-  Menu_function();
+    char nazwa[50];
+    char nazwe_wy[50];
+    Show_menu();
+    printf("Podaj funkcję z zakresu 1-4:\n");
+    Menu_function();
 
-  /* Wczytanie zawartosci wskazanego pliku do pamieci */
-  printf("Podaj nazwe pliku:\n");
-  scanf("%s",nazwa);
-  plik=fopen(nazwa,"r");
+    /* Wczytanie zawartosci wskazanego pliku do pamieci */
+    printf("Podaj nazwe pliku:\n");
+    scanf("%s", nazwa);
+    plik = fopen(nazwa, "r");
 
-  if (plik != NULL) 
-  {       /* co spowoduje zakomentowanie tego warunku */
-    odczytano = czytaj(plik,obraz,&wymx,&wymy,&odcieni);
-    fclose(plik);
-  }
+    if (plik != NULL)
+    { /* co spowoduje zakomentowanie tego warunku */
+        odczytano = czytaj(plik, obraz, &wymx, &wymy, &odcieni);
+        fclose(plik);
+    }
 
+    // Negatyw(&obraz, wymx, wymy, odcieni);
+    Konturowanie(&obraz, wymx, wymy);
+    // Progowanie(&obraz, wymx, wymy, odcieni, 20);
+    // Rozmycie_pion(&obraz, wymx, wymy, 15);
+    // Rozmycie_poz(&obraz, wymx, wymy, 15);
+    zapisz(plik_wy, obraz, wymx, wymy, odcieni);
 
+    if (odczytano != 0)
+        // wyswietl(nazwa);
+        /* Wyswietlenie poprawnie wczytanego obraza zewnetrznym programem */
 
-
-  //Negatyw(&obraz, wymx, wymy, odcieni);
-  //Konturowanie(&obraz, wymx, wymy);
-  //Progowanie(&obraz, wymx, wymy, odcieni, 20);
-  // Rozmycie_pion(&obraz, wymx, wymy, 5);
- Rozmycie_poz(&obraz, wymx, wymy, 5);
-  zapisz(plik_wy,obraz, wymx, wymy, odcieni);
-
-
-      if (odczytano != 0)
-   // wyswietl(nazwa);
-  /* Wyswietlenie poprawnie wczytanego obraza zewnetrznym programem */
-
-      wyswietl("test.pgm");
-  return odczytano;
+        wyswietl("test.pgm");
+    return odczytano;
 }

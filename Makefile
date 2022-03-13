@@ -68,7 +68,7 @@ go:
 
 clean_screen:
 	clear
-#zmiana taka dla jaj drugi
+
 
 
 
