@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include "../inc/odczyt.h" /* Dlugosc buforow pomocniczych */
+// #define M "../inc/"
+#include "odczyt.h" /* Dlugosc buforow pomocniczych */
 
 /************************************************************************************
  * Funkcja wczytuje obraz PGM z pliku do tablicy       	       	       	       	    *

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include "../inc/odczyt.h"
+#include "odczyt.h"
 
 void Show_menu()
 {

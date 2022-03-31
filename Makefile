@@ -1,7 +1,7 @@
 __start__: clean_screen clean _free_lines_ obj all __end__ #run
-	
-CFLAGS = -Wall -pedantic # tutaj można dodawać inne flagi kompilatora
-LIBS =  # tutaj można dodawać biblioteki
+INCLUDEPATH += inc/
+CFLAGS = -Wall -pedantic -I$(INCLUDEPATH)# tutaj można dodawać inne flagi kompilatora
+LIBS =  #tutaj można dodawać biblioteki
 OUT=Program
 bold := $(shell tput bold)
 sgr0 := $(shell tput sgr0)
@@ -40,6 +40,7 @@ OBJ/main.o: src/main.c inc/odczyt.h
 	@echo
 
 clean:
+	
 	@echo "Usuwanie plikow $(bold)*.o$(sgr0) w katalogu$(bold)OBJ$(sgr0)"
 	@echo
 	rm -f OBJ/*
@@ -69,6 +70,9 @@ go:
 clean_screen:
 	clear
 
+
+clean_pgm:
+	rm *.pgm
 
 
 
