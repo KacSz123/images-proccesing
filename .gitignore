@@ -5,3 +5,4 @@ push.bash
 Program
 img/pgm
 *.pgm
+.vscode
