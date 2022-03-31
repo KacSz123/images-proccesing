@@ -94,11 +94,7 @@ int zapisz(FILE *fp,  int obraz_pgm[MAX][MAX], const int wymx, const int wymy, c
   // FILE *fp; /* używamy metody wysokopoziomowej - musimy mieć zatem identyfikator pliku, uwaga na gwiazdkę! */
   // char *tekst = "Hello world123123";
   //char *nazwa = "test.pgm";
-  if ((fp = fopen(nazwa, "w")) == NULL)
-  {
-    printf("Nie mogę otworzyć pliku %s do zapisu!\n", nazwa);
-    exit(1);
-  }
+
   int i, j;
   fprintf(fp, "P2\n");
   fprintf(fp, "%d %d\n", wymx, wymy);
@@ -112,7 +108,7 @@ int zapisz(FILE *fp,  int obraz_pgm[MAX][MAX], const int wymx, const int wymy, c
   }
 
   /* zapisz nasz łańcuch w pliku */
-  fclose(fp); /* zamknij plik */
+ /* zamknij plik */
 
   return 0;
 }

@@ -41,7 +41,7 @@ OBJ/main.o: src/main.c inc/odczyt.h
 
 clean:
 	
-	@echo "Usuwanie plikow $(bold)*.o$(sgr0) w katalogu$(bold)OBJ$(sgr0)"
+	@echo "Usuwanie plikow $(bold)*.o$(sgr0) w katalogu $(bold)OBJ$(sgr0)"
 	@echo
 	rm -f OBJ/*
 	@echo

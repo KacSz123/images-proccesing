@@ -26,17 +26,18 @@ void Show_menu()
 int main()
 {
     int obraz[MAX][MAX];
-    int wymx, wymy, odcieni; //int prog;
+    int wymx, wymy, odcieni; // int prog;
     //__uint8_t promien;
 
     int odczytano = 0;
-    //int wybor;
+    // int wybor;
     FILE *plik;
     FILE *plik_wy;
 
     char nazwa[50];
     char nazwe_wy[50];
     char pokaz_nazwa[50];
+    char sys[5]="clear";
     Show_menu();
     // printf("Podaj funkcję z zakresu 1-4:\n");
     // Menu_function();
@@ -67,15 +68,31 @@ int main()
                 odczytano = czytaj(plik, obraz, &wymx, &wymy, &odcieni);
                 fclose(plik);
 
-                wyswietl(nazwa);
+                //wyswietl(nazwa);
+            }
+            else
+            {
+                printf("Wczytano plik %s", nazwa);
             }
             break;
         case '2':
             printf("Zapisywanie pliku:\n");
             printf("Podaj nazwe pliku:\n");
             scanf("%s", nazwe_wy);
+            if ((plik_wy = fopen(nazwe_wy, "w")) == NULL)
+            {
+                printf("Nie mogę otworzyć pliku %s do zapisu!\n", nazwa);
+                exit(1);
+            }
+            else
+            {
             zapisz(plik_wy, obraz, wymx, wymy, odcieni, nazwe_wy);
+            fclose(plik_wy);
+            printf("Zapisano nowy plik o nazwie %s \n",nazwe_wy);
+            }
             break;
+
+
         case '3':
             printf("Podaj nazwe pliku do wyswietlenia:\n");
             scanf("%s", pokaz_nazwa);
@@ -83,23 +100,29 @@ int main()
             break;
         case '4':
             Konturowanie(&obraz, wymx, wymy);
+            printf("Dokonano operacji konturowania\n");
             break;
         case '5':
             // scanf("%d", promien);
             Rozmycie_pion(&obraz, wymx, wymy, 5);
+            printf("Dokonano operacji rozmycia pion.\n");
             break;
         case '6':
             // printf("Podaj promien (0-20)\n");
             // scanf("%d", promien);
             Rozmycie_pion(&obraz, wymx, wymy, 5);
+            printf("Dokonano operacji rozmycia poz.\n");
             break;
         case '7':
             Progowanie(&obraz, wymx, wymy, odcieni, 20);
+            printf("Dokonano operacji progowania\n");
             break;
         case '8':
             Negatyw(&obraz, wymx, wymy, odcieni);
+            printf("Dokonano operacji negatywu\n");
             break;
         case 'm':
+            system("clear");
             Show_menu();
             break;
         case 'k':
