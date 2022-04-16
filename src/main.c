@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include "odczyt.h"
-
+#include "image.h"
 void Show_menu()
 {
     printf("************ M E N U ************ \n");
@@ -37,17 +37,9 @@ int main()
     char nazwa[50];
     char nazwe_wy[50];
     char pokaz_nazwa[50];
-    char sys[5]="clear";
+    const char sys[5]="clear";
     Show_menu();
-    // printf("Podaj funkcję z zakresu 1-4:\n");
-    // Menu_function();
 
-    /* Wczytanie zawartosci wskazanego pliku do pamieci */
-
-    // Negatyw(&obraz, wymx, wymy, odcieni);
-    // Konturowanie(&obraz, wymx, wymy);
-    // Progowanie(&obraz, wymx, wymy, odcieni, 20);
-    // Rozmycie_poz(&obraz, wymx, wymy, 5);
 
     char a = '0';
 

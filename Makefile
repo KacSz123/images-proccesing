@@ -18,10 +18,10 @@ __end__:
 	@echo "Uruchom plik $(bold)${OUT}$(sgr0) w celu przetestowania programu"  
 	@echo  ""
 	
-all: OBJ/odczyt.o OBJ/main.o
+all: OBJ/odczyt.o OBJ/image.o OBJ/main.o
 	@echo "Kompilacja i konsolidacja programu"
 	@echo
-	gcc ${CFLAGS} -o ${OUT} OBJ/main.o OBJ/odczyt.o
+	gcc ${CFLAGS} -o ${OUT} OBJ/main.o OBJ/odczyt.o OBJ/image.o
 	@echo
 	@echo
 
@@ -36,6 +36,13 @@ OBJ/main.o: src/main.c inc/odczyt.h
 	@echo "Kompilacja pliku $(bold)main.c$(sgr0)"
 	@echo
 	gcc -c ${CFLAGS} src/main.c -o OBJ/main.o
+	@echo
+	@echo
+
+OBJ/image.o: src/image.c inc/image.h
+	@echo "Kompilacja pliku $(bold)Image.c$(sgr0)"
+	@echo
+	gcc -c ${CFLAGS} src/image.c -o OBJ/image.o
 	@echo
 	@echo
 
