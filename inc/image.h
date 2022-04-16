@@ -16,6 +16,8 @@ int _Img[1024][1024];
 int _Shades;
 };
 
-
+//
+///
+///
 
 void InitImage(int DimY, int DimX, int Sh);
