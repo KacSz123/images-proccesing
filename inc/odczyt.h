@@ -4,7 +4,7 @@
 #include<string.h>
 #include<stdlib.h>
 #include<math.h>
-
+#include "image.h"
 #define MAX 1024            /* Maksymalny rozmiar wczytywanego obrazu */
 #define DL_LINII 1024      /* Dlugosc buforow pomocniczych */
 
@@ -22,10 +22,19 @@
 int czytaj(FILE *plik_we, int obraz_pgm[MAX][MAX], int *wymx,int *wymy, int *szarosci); 
 
 
-
 /* Wyswietlenie obrazu o zadanej nazwie za pomoca programu "display"   */
 void wyswietl(char *n_pliku); 
-
+/**
+ * @brief 
+ * 
+ * @param fp 
+ * @param obraz_pgm 
+ * @param wymx 
+ * @param wymy 
+ * @param szarosci 
+ * @param nazwa 
+ * @return int 
+ */
 int zapisz(FILE *fp,  int obraz_pgm[MAX][MAX],const int wymx,const int wymy, const int szarosci, char* nazwa);
 void Negatyw(int (*obraz_pgm)[MAX][MAX],const int wymx, const int wymy,  int szarosci);
 void Konturowanie(int (*o_pgm)[MAX][MAX], const int wymx, const int wymy); 

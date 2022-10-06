@@ -1,6 +1,6 @@
 __start__: clean_screen clean _free_lines_ obj all __end__ #run
-INCLUDEPATH += inc/
-CFLAGS = -Wall -pedantic -I$(INCLUDEPATH)# tutaj można dodawać inne flagi kompilatora
+INCPATH += inc/
+CFLAGS = -Wall -pedantic -I$(INCPATH)# tutaj można dodawać inne flagi kompilatora
 LIBS =  #tutaj można dodawać biblioteki
 OUT=Program
 bold := $(shell tput bold)
@@ -47,25 +47,29 @@ OBJ/image.o: src/image.c inc/image.h
 	@echo
 
 clean:
-	
-	@echo "Usuwanie plikow $(bold)*.o$(sgr0) w katalogu $(bold)OBJ$(sgr0)"
-	@echo
-	rm -f OBJ/*
-	@echo
-	@echo "$(bold)Usuwanie$(sgr0) katalogu$(bold) OBJ$(sgr0)"
-	@echo
-	rmdir OBJ
+	if  test -d OBJ; then \
+	echo "Usuwanie plikow $(bold)*.o$(sgr0) w katalogu $(bold)OBJ$(sgr0)" &&\
+	echo &&\
+	rm -f  OBJ/* &&\
+	echo &&\
+	echo "$(bold)Usuwanie$(sgr0) katalogu$(bold) OBJ$(sgr0)" &&\
+	echo &&\
+	rmdir OBJ; \
+	fi
 
 clean_exec:
 	rm Program
 
 obj: 
-	@echo "Tworzenie katalogu$(bold) OBJ$(sgr0)"
-	@echo
-	mkdir OBJ
-	@echo
-	@echo
+	if  !(test -d OBJ); then \
+	echo "Tworzenie katalogu$(bold) OBJ$(sgr0)" &&\
+	echo &&\
+	mkdir OBJ &&\
+	echo &&\
+	echo; \
+	fi
 
+	
 run: clean_screen go
 
 
