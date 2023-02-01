@@ -23,7 +23,8 @@ int czytaj(FILE *plik_we, int obraz_pgm[MAX][MAX],  int *wymx, int *wymy, int *s
   int znak;           /* zmienna pomocnicza do czytania komentarzy */
   int koniec = 0;     /* czy napotkano koniec danych w pliku */
   int i, j;
-
+  // printf("oto wksaznik file:");
+  // printf("%p",plik_we);
   /*Sprawdzenie czy podano prawid�owy uchwyt pliku */
   if (plik_we == NULL)
   {
@@ -104,8 +105,11 @@ int zapisz(FILE *fp,  int obraz_pgm[MAX][MAX], const int wymx, const int wymy, c
   for (i = 0; i < wymy; ++i)
   {
     for (j = 0; j < wymx; ++j)
+    {
       fprintf(fp, "%d ", obraz_pgm[i][j]);
-
+    
+      // if(j%100==0) fprintf(fp, "\n"); //????
+    }
     fprintf(fp, "\n");
   }
 

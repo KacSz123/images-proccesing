@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include "odczyt.h"
 #include "image.h"
+
+typedef enum {NO_ERROR, FILE_LOADING, IMG_FUN_ERROR, OTHER_ERROR} ERRORS;
 void Show_menu()
 {
     printf("************ M E N U ************ \n");
@@ -34,6 +36,9 @@ int main()
     FILE *plik;
     FILE *plik_wy;
 
+
+    Image img, img2;
+    img._allocationFlag=false;
     char nazwa[50];
     char nazwe_wy[50];
     char pokaz_nazwa[50];
@@ -57,15 +62,19 @@ int main()
 
             if (plik != NULL)
             { /* co spowoduje zakomentowanie tego warunku */
-                odczytano = czytaj(plik, obraz, &wymx, &wymy, &odcieni);
+                odczytano = ReadFile(plik, &img);
                 fclose(plik);
+                printImgParamStdout(img);
 
+                printf("Wczytano plik %s", nazwa);
                 //wyswietl(nazwa);
             }
             else
             {
-                printf("Wczytano plik %s", nazwa);
+                fprintf(stderr,"!\n");
+                return 1;
             }
+            img2=img;
             break;
         case '2':
             printf("Zapisywanie pliku:\n");
@@ -78,8 +87,8 @@ int main()
             }
             else
             {
-            zapisz(plik_wy, obraz, wymx, wymy, odcieni, nazwe_wy);
-            fclose(plik_wy);
+            WriteFile(plik_wy, img);
+            // fclose(plik_wy);
             printf("Zapisano nowy plik o nazwie %s \n",nazwe_wy);
             }
             break;

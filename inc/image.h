@@ -16,10 +16,21 @@
 #include<stdlib.h>
 #include<math.h>
 #include<stdbool.h>
-typedef enum ErroType{FILE_ERROR, OTHER_ERROR};
+#define DL_LINII 70 
 
+
+
+
+/*!
+ * @brief New type for ppm pixels. Table of 3 integer values [r,g,b].
+ * 
+ */
 typedef int ppm[3];
 //optional typedef struct ppm{int _rgb[3];}ppm; 
+/*!
+ * @brief imgPixel
+ * Union of optional types for image pixel. For PGM it is int, for PPM it is ppm.
+ */
 union imgPixel
 {
     int _pixel;
@@ -27,43 +38,31 @@ union imgPixel
 
 };
 typedef struct Image{
-
-char _magickNumber[2];
-int _dimY;
+bool _allocationFlag;
+char _magickNumber[3];
 int _dimX;
-//future impPixel** _img;
-int** _img;
+int _dimY;
+// impPixel** _img; //future 
 int _shades;
-char* _name;
+int* _img;
+// char _name[50];
 }Image;
 
 //
 ///
 ///
 
-inline void LoadImage(Image *Img)
-{
-    Img=(Image*)malloc(sizeof(Img));
-    Img->_img=(int**)malloc(sizeof(int)*(Img->_dimX)*(Img->_dimY));
-}
-inline void FreeImageSpace(Image *Img)
-{
-    free(Img->_name);
-    free(Img);
-}
-////////
-// bool a = true;
-/*!
- * @brief 
- * 
- * @param file 
- * @param Img 
- * @return int 
- */
-int ReadFile(FILE *file, Image *Img);
-void WriteFile(FILE *file, const Image Img);
-void ContureImage(Image ImgInput, Image ImgOutput);
-void BlurrImageVertical(Image ImgInput, Image ImgOutput);
-void BlurrImageHorizontal(Image ImgInput, Image ImgOutput);
-void NegativeImage(Image ImgInput, Image ImgOutput, int Ray);
-void ThresholdImage(Image ImgInput, Image ImgOutput, int Ray);
+
+
+void loadImage(Image *Img);
+void freeImageSpace(Image *Img);
+void printImgParamStdout(const Image Img);
+
+
+int ReadFile(FILE *inputFile, Image *img);
+void WriteFile(FILE *file, const Image img);
+void ContureImage(Image imgInput, Image imgOutput);
+void BlurrImageVertical(Image imgInput, Image imgOutput);
+void BlurrImageHorizontal(Image imgInput, Image imgOutput);
+void NegativeImage(Image imgInput, Image imgOutput, int ray);
+void ThresholdImage(Image imgInput, Image imgOutput, int ray);
