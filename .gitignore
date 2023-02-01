@@ -3,7 +3,7 @@ OBJ
 test.pgm
 push.bash
 Program
-img/pgm
-*.pgm
+# img/pgm
+# *.pgm
 .vscode
 OBJ/*.o
