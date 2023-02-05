@@ -1,9 +1,11 @@
 m.txt
 OBJ
-test.pgm
+#*.pgm
 push.bash
 Program
 # img/pgm
 # *.pgm
 .vscode
 OBJ/*.o
+doc/html
+doc/latex

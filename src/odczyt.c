@@ -3,7 +3,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-// #define M "../inc/"
 #include "odczyt.h" /* Dlugosc buforow pomocniczych */
 
 /************************************************************************************
@@ -98,7 +97,7 @@ int zapisz(FILE *fp,  int obraz_pgm[MAX][MAX], const int wymx, const int wymy, c
   // char *tekst = "Hello world123123";
   //char *nazwa = "test.pgm";
 
-  int i, j;
+  int i, j,counter=0;
   fprintf(fp, "P2\n");
   fprintf(fp, "%d %d\n", wymx, wymy);
   fprintf(fp, "%d\n", szarosci);
@@ -106,11 +105,14 @@ int zapisz(FILE *fp,  int obraz_pgm[MAX][MAX], const int wymx, const int wymy, c
   {
     for (j = 0; j < wymx; ++j)
     {
-      fprintf(fp, "%d ", obraz_pgm[i][j]);
-    
+      fprintf(fp, "%3d ", obraz_pgm[i][j]);
+      ++counter;
+
+      if(counter%69==0)
+      fprintf(fp, "\n");
       // if(j%100==0) fprintf(fp, "\n"); //????
     }
-    fprintf(fp, "\n");
+    
   }
 
   /* zapisz nasz łańcuch w pliku */
@@ -217,7 +219,6 @@ void Rozmycie_pion(int (*o_pgm)[MAX][MAX], const int wymx, const int wymy, const
 void Rozmycie_poz(int (*o_pgm)[MAX][MAX], const int wymx, const int wymy, const int promien)
 {
   int i, j, k, p;
-
   for (i = 0; i < wymy; ++i)
   {
     for (j = 0; j <= promien; ++j)

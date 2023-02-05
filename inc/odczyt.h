@@ -6,7 +6,7 @@
 #include<math.h>
 #include "image.h"
 #define MAX 1024            /* Maksymalny rozmiar wczytywanego obrazu */
-#define DL_LINII 100      /* Dlugosc buforow pomocniczych */
+#define DL_LINII2 100      /* Dlugosc buforow pomocniczych */
 
 /************************************************************************************
  * Funkcja wczytuje obraz PGM z pliku do tablicy       	       	       	       	    *
@@ -27,7 +27,7 @@ void wyswietl(char *n_pliku);
 /**
  * @brief 
  * 
- * @param fp 
+ * @param[in] fp 
  * @param obraz_pgm 
  * @param wymx 
  * @param wymy 
